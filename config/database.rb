@@ -6,19 +6,20 @@ configure do
 
   if Sinatra::Application.development?
     set :database, {
-        adapter: "sqlite3",
-        database: "db/db.sqlite3"
+      adapter: "sqlite3",
+      database: "db/db.sqlite3"
     }
   else
-    db_url = 'postgres://[postgres://rrmzasnduptptv:ef2c5c79d43d3ceee983adfbe8b1fa2e06ee1ec73e9038b0bfe95c778a402879@ec2-52-45-73-150.compute-1.amazonaws.com:5432/ddjkk6e6u9tnbe]'
-    db = URI.parse(ENV]'DATABASE_URL') || db_url)
+    db_url = 'postgres://postgres://rrmzasnduptptv:ef2c5c79d43d3ceee983adfbe8b1fa2e06ee1ec73e9038b0bfe95c778a402879@ec2-52-45-73-150.compute-1.amazonaws.com:5432/ddjkk6e6u9tnbe
+'
+    db = URI.parse(ENV['DATABASE_URL'] || db_url)
     set :database, {
-        adapater: "postgresql",
-        host: db.host,
-        username: db.user,
-        password: db.password,
-        database: db.path[1..-1]
-        encoding: 'utf8'
+      adapter: "postgresql",
+      host: db.host,
+      username: db.user,
+      password: db.password,
+      database: db.path[1..-1],
+      encoding: 'utf8'
     }
   end
 
